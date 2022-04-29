@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -11,6 +11,12 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
+    useEffect(() => {
+        if (user) {
+            console.log(user)
+        }
+    }, [user])
     const handleForm = (event) => {
         event.preventDefault()
 
@@ -26,10 +32,10 @@ const Login = () => {
                 <h3>Login</h3>
                 <form onSubmit={handleForm}>
                     <div>
-                        <input type="email" name="email" id="" placeholder='Your Email' />
+                        <input type="email" name="email" id="email" placeholder='Your Email' />
                     </div>
                     <div>
-                        <input type="password" name="password" id="" placeholder='Your Password' />
+                        <input type="password" name="password" id="password" placeholder='Your Password' />
                     </div>
                     <input type="submit" value="LogIn" />
                 </form>

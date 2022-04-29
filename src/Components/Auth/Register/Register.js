@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -13,11 +13,14 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    if (user) {
-        console.log(user)
-    }
     const [formError, setFormError] = useState({ nameError: "", emailError: "", passwordError: "", confirmPasswordError: "" })
 
+
+    useEffect(() => {
+        if (user) {
+            console.log(user)
+        }
+    }, [user])
 
     const handleForm = (event) => {
         event.preventDefault()
