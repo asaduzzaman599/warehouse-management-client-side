@@ -13,16 +13,16 @@ const Register = () => {
                 <form action="">
                     <div>
 
-                        <input type="email" name="name" id="" placeholder='Your Name' />
+                        <input type="text" name="name" id="name" placeholder='Your Name' />
                     </div>
                     <div>
-                        <input type="email" name="email" id="" placeholder='Your Email' />
+                        <input type="email" name="email" id="email" placeholder='Your Email' />
                     </div>
                     <div>
-                        <input type="password" name="password" id="" placeholder='Your Password' />
+                        <input type="password" name="password" id="password" placeholder='Your Password' />
                     </div>
                     <div>
-                        <input type="password" name="confirmPassword" id="" placeholder='Confirm Password' />
+                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder='Confirm Password' />
                     </div>
 
 
