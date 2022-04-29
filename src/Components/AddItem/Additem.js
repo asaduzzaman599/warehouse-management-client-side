@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Additem = () => {
     const navigate = useNavigate()
@@ -18,7 +19,7 @@ const Additem = () => {
         const price = Number(event.target.price.value);
         const quantity = Number(event.target.quantity.value);
         const supplier = event.target.supplier.value;
-        const email = 'asaduzzaman'
+        const email = 'asaduzzamansoumit@gmail.com'
         if (!price || price < 0) {
             return setError({ ...error, price: "Invalid Price" })
         }
@@ -38,7 +39,12 @@ const Additem = () => {
             body: JSON.stringify(product)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.success) {
+                    toast.success(data.message)
+                    navigate('/manage')
+                }
+            })
 
     }
 

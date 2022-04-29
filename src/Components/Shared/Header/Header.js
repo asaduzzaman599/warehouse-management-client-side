@@ -3,17 +3,19 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <nav className='container mx-auto flex justify-between items-center'>
-            <div>Store House Controller</div>
+        <header className='bg-slate-800'>
+            <nav className=' mx-auto flex justify-between items-center py-6  container text-white'>
+                <div className='text-white'>Store House Controller</div>
 
-            <div className='flex gap-5'>
-                <NavLink to='/'>Manage Items</NavLink>
-                <NavLink to='/add'>Add Item</NavLink>
-                <NavLink to='/'>My items</NavLink>
-                <NavLink to='/'>Logout</NavLink>
-            </div>
+                <ul className='flex gap-5 no-underline'>
+                    <li className='text-xs hover:text-slate-400'><NavLink to='/manage'>Manage Items</NavLink></li>
+                    <li className='text-xs hover:text-slate-400'><NavLink to='/add'>Add Item</NavLink></li>
+                    <li className='text-xs hover:text-slate-400'><NavLink to='/myitems'>My items</NavLink></li>
+                    <li className='text-xs hover:text-slate-400'><NavLink to='/'>Logout</NavLink></li>
+                </ul>
 
-        </nav>
+            </nav>
+        </header>
     );
 };
 

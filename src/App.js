@@ -8,6 +8,8 @@ import Header from './Components/Shared/Header/Header';
 import Footer from './Components/Shared/Footer/Footer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ManageItem from './Components/ManageItems/ManageItem';
+import Myitems from './Components/Myitems/Myitems';
 
 function App() {
   return (
@@ -21,6 +23,12 @@ function App() {
         }></Route>
         <Route path='/add' element={
           <PageTitle title={"Add Item"}><Additem></Additem></PageTitle>
+        }></Route>
+        <Route path='/manage' element={
+          <PageTitle title={"Manage Items"}><ManageItem></ManageItem></PageTitle>
+        }></Route>
+        <Route path='/myitems' element={
+          <PageTitle title={"My Items"}><Myitems></Myitems></PageTitle>
         }></Route>
       </Routes>
       <Footer></Footer>
