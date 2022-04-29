@@ -21,7 +21,6 @@ const Header = () => {
                                 <li className='text-sm hover:text-slate-400'><NavLink to='/add'>Add Item</NavLink></li>
                                 <li className='text-sm hover:text-slate-400'><NavLink to='/myitems'>My items</NavLink></li>
                                 <li className='text-sm hover:text-slate-400'><button onClick={() => signOut(auth)}>Logout</button></li>
-                                <li className='text-sm hover:text-slate-400'><button onClick={() => signOut(auth)}>Logout</button></li>
                             </> :
                             <>
                                 <li className='text-sm hover:text-slate-400'><NavLink to='/login'>Login</NavLink></li>
