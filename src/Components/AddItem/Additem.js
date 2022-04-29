@@ -28,7 +28,7 @@ const Additem = () => {
         }
 
         const product = {
-            name, description, image, price, quantity, supplier, email
+            name, description, image, price, quantity, supplier, email, sold: 0
         }
 
         fetch("http://localhost:5000/product", {

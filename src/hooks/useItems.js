@@ -4,7 +4,7 @@ const useItems = (limit) => {
 
     const [items, setItems] = useState([])
     useEffect(() => {
-        const url = `http://localhost:5000/product?limit=${limit}`
+        const url = `http://localhost:5000/products?limit=${limit}`
         fetch(url)
             .then(res => res.json())
             .then(data => setItems(data))
