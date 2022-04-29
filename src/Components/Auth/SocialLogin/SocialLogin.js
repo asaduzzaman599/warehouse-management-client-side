@@ -1,8 +1,12 @@
 import React from 'react';
 import google from './../../../images/logos/google-logopng.png'
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { auth } from '../../../firebase.init';
 const SocialLogin = () => {
-    const googleLogin = () => {
 
+    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const googleLogin = () => {
+        signInWithGoogle()
     }
     return (
         <div className='w-full'>
