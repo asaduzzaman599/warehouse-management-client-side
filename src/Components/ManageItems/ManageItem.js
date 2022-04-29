@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import useItems from '../../hooks/useItems';
+import manageDelete from '../../hooks/utils/manageDelete';
 import TableItem from '../TableItem/TableItem';
 
 const ManageItem = () => {
     const [items, setItems] = useItems()
-    const deleteItem = (id) => {
-        console.log(id)
+    const deleteItem = async (id) => {
+        const data = await manageDelete(id)
+        console.log(data)
+        if (data.success && data.result.deletedCount) {
+            const remainItem = items.filter(item => item._id !== id)
+            setItems(remainItem)
+        } else {
+            toast.error(data.error)
+        }
 
     }
 
