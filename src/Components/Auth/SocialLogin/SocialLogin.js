@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import google from './../../../images/logos/google-logopng.png'
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { auth } from '../../../firebase.init';
-const SocialLogin = () => {
+import { useNavigate } from 'react-router-dom';
+const SocialLogin = ({ from = '/' }) => {
 
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [user] = useAuthState(auth)
+    const navigate = useNavigate()
+    const [signInWithGoogle, u, loading, error] = useSignInWithGoogle(auth);
     const googleLogin = () => {
         signInWithGoogle()
     }
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true })
+        }
+    }, [user])
     return (
         <div className='w-full'>
             <div className='flex items-center my-6'>

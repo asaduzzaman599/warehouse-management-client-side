@@ -13,6 +13,7 @@ import Myitems from './Components/Myitems/Myitems';
 import UpdateStock from './Components/UpdateStock/UpdateStock';
 import Login from './Components/Auth/Login/Login';
 import Register from './Components/Auth/Register/Register';
+import PrivateRoute from './Components/Auth/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -34,7 +35,9 @@ function App() {
           <PageTitle title={"My Items"}><Myitems></Myitems></PageTitle>
         }></Route>
         <Route path='inventory/:id' element={
-          <PageTitle title={"Items Stock"}><UpdateStock></UpdateStock></PageTitle>
+          <PrivateRoute>
+            <PageTitle title={"Items Stock"}><UpdateStock></UpdateStock></PageTitle>
+          </PrivateRoute>
         }></Route>
         <Route path='/login' element={
           <PageTitle title={"Login"}><Login></Login></PageTitle>

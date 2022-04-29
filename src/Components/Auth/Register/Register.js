@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
 
     const [user] = useAuthState(auth)
-    const [
-        createUserWithEmailAndPassword,
-        u,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [createUserWithEmailAndPassword, u, loading, error,] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const navigate = useNavigate()
 
     const [formError, setFormError] = useState({ nameError: "", emailError: "", passwordError: "", confirmPasswordError: "" })
 
-
+    const from = '/'
     useEffect(() => {
         if (user) {
-            console.log(user)
+            navigate(from)
         }
     }, [user])
 
@@ -67,7 +64,7 @@ const Register = () => {
                     <input type="submit" value="Register" />
                 </form>
 
-                <SocialLogin></SocialLogin>
+                <SocialLogin from={from}></SocialLogin>
             </div>
         </div>
     );
