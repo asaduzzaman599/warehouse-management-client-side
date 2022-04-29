@@ -19,7 +19,7 @@ const ManageItem = () => {
 
     return (
         <div>
-            <h3>Manage Inventories:{items.length}</h3>
+            <h3 className='my-10 text-2xl font-medium'>Manage Inventories</h3>
 
 
 

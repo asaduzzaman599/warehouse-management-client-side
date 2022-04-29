@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Item from '../Shared/Item/Item';
 
 const Myitems = () => {
     const [items, setItems] = useState([])
@@ -15,6 +16,14 @@ const Myitems = () => {
         <div>
 
             <h3>My Items:{items.length}</h3>
+
+            <div className='grid md:grid-cols-3 container mx-auto gap-8'>
+                {
+                    items.map(item => <Item key={item._id}
+                        item={item}
+                    ></Item>)
+                }
+            </div>
         </div>
     );
 };

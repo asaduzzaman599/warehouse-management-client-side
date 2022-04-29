@@ -10,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ManageItem from './Components/ManageItems/ManageItem';
 import Myitems from './Components/Myitems/Myitems';
+import UpdateStock from './Components/UpdateStock/UpdateStock';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         }></Route>
         <Route path='/myitems' element={
           <PageTitle title={"My Items"}><Myitems></Myitems></PageTitle>
+        }></Route>
+        <Route path='inventory/:id' element={
+          <PageTitle title={"Items Stock"}><UpdateStock></UpdateStock></PageTitle>
         }></Route>
       </Routes>
       <Footer></Footer>
