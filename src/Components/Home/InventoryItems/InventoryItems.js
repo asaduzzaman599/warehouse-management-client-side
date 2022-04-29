@@ -19,6 +19,7 @@ const InventoryItems = () => {
                     </Item>)
                 }
             </div>
+            <Link to="/manage" className='inline-block mt-8 py-4 px-8 font-medium text-slate-600 bg-slate-400 cursor-pointer hover:text-white hover:bg-slate-800 rounded duration-500' >Manage Inventories</Link>
         </div>
     );
 };

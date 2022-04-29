@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const UpdateStock = () => {
@@ -60,12 +60,18 @@ const UpdateStock = () => {
 
             <div className='grid md:grid-cols-3  py-2.5 mt-12 '>
                 <div className='md:col-span-1 px-6 md:order-2 w-full mx-auto'>
+
+
+
                     {/* from to update stock */}
                     <form onSubmit={handleForm} className=' bg-slate-800 p-6 rounded-lg w-full mx-auto mb-10'>
                         <input type="number" name="quantity" className="block  px-0 w-full text-sm text-white  bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:ring-0 focus:border-blue-600 peer" placeholder="Add Quantity" required />
                         <br />
                         <input type="submit" value="Add" className='py-2 px-8 font-medium text-white bg-slate-700 cursor-pointer hover:bg-white hover:text-slate-800 rounded duration-500' />
                     </form>
+                    <hr />
+                    <Link to="/manage" className='inline-block mb-8 py-4 px-8 font-medium text-white bg-slate-700 cursor-pointer border-2 border-slate-700 hover:bg-white hover:text-slate-800 rounded duration-500' >Manage Inventories</Link>
+
                 </div>
                 <div className='md:col-span-2 p-10  bg-white  md:order-1 rounded mx-8 shadow-lg'>
                     <h3 className='text-2xl font-medium text-slate-800 mt-10'>{item.name}</h3>
