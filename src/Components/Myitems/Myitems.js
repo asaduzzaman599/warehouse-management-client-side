@@ -5,6 +5,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { auth } from '../../firebase.init';
 import Item from '../Shared/Item/Item';
+import NoData from '../Shared/NoData/NoData';
 
 const Myitems = () => {
     const [items, setItems] = useState([])
@@ -37,13 +38,14 @@ const Myitems = () => {
     return (
         <div className='mb-10'>
 
-            <h3>My Items:{items.length}</h3>
+            <h3 className='my-10 text-2xl font-medium'>My Items</h3>
 
             <div className='grid md:grid-cols-3 container mx-auto gap-8'>
-                {
+                {items.length > 0 ?
                     items.map(item => <Item key={item._id}
                         item={item}
                     ></Item>)
+                    : <NoData></NoData>
                 }
             </div>
         </div>

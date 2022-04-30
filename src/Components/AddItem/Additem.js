@@ -54,7 +54,7 @@ const Additem = () => {
 
     return (
         <div className='w-4/5 mx-auto md:w-2/4 bg-white my-8 p-8 shadow-lg'>
-            <h3 className='my-4'>Add Item</h3>
+            <h3 className='my-10 text-2xl font-medium'>Add Item</h3>
 
             <form onSubmit={handleForm} className='text-left mt-4'>
                 <div className="relative z-0 w-full mb-6 group">

@@ -79,6 +79,9 @@ const ManageItem = () => {
 
                     </tbody>
                 </table>
+
+            </div>
+            <div className='my-4'>
                 {
                     [...Array(count).keys()].map(number => <button
                         key={number} className={`${page === number ? 'bg-slate-700 text-white' : ''} px-2  m-2 inline-block rounded-full border-2 border-slate-700`} onClick={() => setPage(number)}>{number + 1}</button>)
@@ -89,7 +92,6 @@ const ManageItem = () => {
                     <option value="15">15</option>
                 </select>
             </div>
-
         </div>
     );
 };

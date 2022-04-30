@@ -8,8 +8,8 @@ const InventoryItems = () => {
 
 
     return (
-        <div className='container mx-auto'>
-            <h3>invetory items : {items.length}</h3>
+        <div className='container mx-auto my-8'>
+            <h3 className='my-10 text-2xl font-medium'>invetory Section </h3>
 
             <div className='grid grid-cols-3 gap-10'>
                 {
