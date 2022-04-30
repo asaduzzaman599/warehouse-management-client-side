@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useItems from '../../hooks/useItems';
@@ -5,7 +6,24 @@ import manageDelete from '../../utils/manageDelete';
 import TableItem from '../TableItem/TableItem';
 
 const ManageItem = () => {
-    const [items, setItems] = useItems()
+    const [page, setPage] = useState(0)
+    const [size, setSize] = useState(5)
+    const [count, setCount] = useState(0)
+    const [items, setItems] = useState([])
+    useEffect(() => {
+        const url = `http://localhost:5000/allproducts?page=${page}&&size=${size}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    setItems(data.result)
+                    const pageNumber = Math.ceil(data.count / size)
+                    setCount(pageNumber)
+                }
+            })
+    }, [page, size])
+
+
     const deleteItem = async (id) => {
         const data = await manageDelete(id)
         console.log(data)
@@ -19,7 +37,7 @@ const ManageItem = () => {
     }
 
     return (
-        <div className='mb-10 container mx-auto'>
+        <div className='mb-10 container mx-auto px-4'>
             <h3 className='my-10 text-2xl font-medium'>Manage Inventories</h3>
 
 
@@ -61,6 +79,15 @@ const ManageItem = () => {
 
                     </tbody>
                 </table>
+                {
+                    [...Array(count).keys()].map(number => <button
+                        key={number} className={`${page === number ? 'bg-slate-700 text-white' : ''} px-2  m-2 inline-block rounded-full border-2 border-slate-700`} onClick={() => setPage(number)}>{number + 1}</button>)
+                }
+                <select onChange={(event) => setSize(event.target.value)} id="" defaultValue={size} className='border-0 '>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
             </div>
 
         </div>

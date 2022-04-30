@@ -11,11 +11,11 @@ const SocialLogin = ({ from = '/' }) => {
     const googleLogin = () => {
         signInWithGoogle()
     }
-    useEffect(() => {
+    /* useEffect(() => {
         if (user) {
             navigate(from, { replace: true })
         }
-    }, [user])
+    }, [user]) */
     return (
         <div className='w-full'>
             <div className='flex items-center my-6'>
