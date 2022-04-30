@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useItems from '../../hooks/useItems';
-import manageDelete from '../../hooks/utils/manageDelete';
+import manageDelete from '../../utils/manageDelete';
 import TableItem from '../TableItem/TableItem';
 
 const ManageItem = () => {
@@ -19,11 +19,13 @@ const ManageItem = () => {
     }
 
     return (
-        <div>
+        <div className='mb-10 container mx-auto'>
             <h3 className='my-10 text-2xl font-medium'>Manage Inventories</h3>
 
 
-            <Link to="/manage" className='inline-block mt-8  me-py-4 px-8 font-medium text-white  bg-slate-800 cursor-pointer hover:text-white hover:bg-slate-800 rounded duration-500' >Add Items</Link>
+            <div className='text-left mb-6'>
+                <Link to="/add" className='inline-block mt-8  py-4 px-8 font-medium text-white  bg-slate-800 cursor-pointer hover:text-white hover:bg-slate-800 rounded duration-500' >Add Items</Link>
+            </div>
 
 
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg container mx-auto">
@@ -35,7 +37,7 @@ const ManageItem = () => {
                                 Item
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Description
+                                By
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Supplier

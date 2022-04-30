@@ -1,19 +1,41 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { auth } from '../../firebase.init';
 import Item from '../Shared/Item/Item';
 
 const Myitems = () => {
     const [items, setItems] = useState([])
-
+    const [user] = useAuthState(auth)
+    const navigate = useNavigate()
 
     useEffect(() => {
-        const email = 'asaduzzamansoumit@gmail.com'
+        const email = user?.email
         const url = `http://localhost:5000/myproduct?email=${email}`
-        fetch(url)
+        const token = localStorage.getItem('access_token')
+
+        fetch(url, {
+            headers: { token }
+        })
             .then(res => res.json())
-            .then(data => setItems(data))
-    }, [])
+            .then(data => {
+                console.log(data)
+                if (data?.success) {
+                    setItems(data.result)
+                }
+                if (data?.message && user) {
+                    toast.error(data?.message)
+                    signOut(auth)
+                    navigate('/login')
+                }
+            })
+    }, [user])
+
+    console.log(items)
     return (
-        <div>
+        <div className='mb-10'>
 
             <h3>My Items:{items.length}</h3>
 

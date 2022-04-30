@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { auth } from '../../firebase.init';
 
 const Additem = () => {
     const navigate = useNavigate()
@@ -8,6 +10,8 @@ const Additem = () => {
         price: '',
         quantity: ''
     })
+    const [user] = useAuthState(auth)
+
 
 
     const handleForm = (event) => {
@@ -19,7 +23,7 @@ const Additem = () => {
         const price = Number(event.target.price.value);
         const quantity = Number(event.target.quantity.value);
         const supplier = event.target.supplier.value;
-        const email = 'asaduzzamansoumit@gmail.com'
+        const email = user?.email
         if (!price || price < 0) {
             return setError({ ...error, price: "Invalid Price" })
         }

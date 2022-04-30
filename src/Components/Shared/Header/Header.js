@@ -17,6 +17,7 @@ const Header = () => {
                     {
                         user ?
                             <>
+                                <li className='text-sm hover:text-slate-400'><NavLink to='/'>Home</NavLink></li>
                                 <li className='text-sm hover:text-slate-400'><NavLink to='/manage'>Manage Items</NavLink></li>
                                 <li className='text-sm hover:text-slate-400'><NavLink to='/add'>Add Item</NavLink></li>
                                 <li className='text-sm hover:text-slate-400'><NavLink to='/myitems'>My items</NavLink></li>

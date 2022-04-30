@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
@@ -9,15 +10,18 @@ const Login = () => {
     const [
         signInWithEmailAndPassword, u, loading, error,] = useSignInWithEmailAndPassword(auth);
 
+    const [token] = useToken(user)
+
     const location = useLocation()
     const navigate = useNavigate()
     const from = location?.state?.from?.pathname || '/'
 
     useEffect(() => {
-        if (user) {
+        if (token) {
+            console.log(token)
             navigate(from, { replace: true })
         }
-    }, [user])
+    }, [token])
     const handleForm = (event) => {
         event.preventDefault()
 

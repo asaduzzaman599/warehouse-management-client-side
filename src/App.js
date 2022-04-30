@@ -17,7 +17,7 @@ import PrivateRoute from './Components/Auth/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
-    <div className="App bg-blue-50">
+    <div className="App bg-blue-50 min-h-screen flex flex-col justify-between">
 
       <Header></Header>
       <ToastContainer />
