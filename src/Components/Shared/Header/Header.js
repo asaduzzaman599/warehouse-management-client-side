@@ -9,18 +9,32 @@ const Header = () => {
     return (
         <header className='bg-slate-800'>
             <nav className=' mx-auto flex justify-between items-center py-6  container text-white'>
-                <Link to="/">
-                    <div className='text-white text-xl'>Store House Controller</div>
-                </Link>
+                <div className='flex items-center gap-10'>
+                    <Link to="/">
+                        <div className='text-white text-xl'>Store House Controller</div>
+                    </Link>
+                    <ul className='md:flex gap-5 no-underline'>
 
+                        <li className='text-sm hover:text-slate-400'><NavLink to='/'>Home</NavLink></li>
+                        {
+                            user ?
+                                <>
+                                    <li className='text-sm hover:text-slate-400'><NavLink to='/manage'>Manage Items</NavLink></li>
+                                    <li className='text-sm hover:text-slate-400'><NavLink to='/add'>Add Item</NavLink></li>
+                                    <li className='text-sm hover:text-slate-400'><NavLink to='/myitems'>My items</NavLink></li>
+
+                                </> :
+                                <>
+                                </>
+                        }
+
+                        <li className='text-sm hover:text-slate-400'><NavLink to='/blogs'>Blogs</NavLink></li>
+                    </ul>
+                </div>
                 <ul className='md:flex gap-5 no-underline'>
                     {
                         user ?
                             <>
-                                <li className='text-sm hover:text-slate-400'><NavLink to='/'>Home</NavLink></li>
-                                <li className='text-sm hover:text-slate-400'><NavLink to='/manage'>Manage Items</NavLink></li>
-                                <li className='text-sm hover:text-slate-400'><NavLink to='/add'>Add Item</NavLink></li>
-                                <li className='text-sm hover:text-slate-400'><NavLink to='/myitems'>My items</NavLink></li>
                                 <li className='text-sm hover:text-slate-400'><button onClick={() => signOut(auth)}>Logout</button></li>
                             </> :
                             <>

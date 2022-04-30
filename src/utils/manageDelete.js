@@ -1,4 +1,5 @@
 const manageDelete = async (id) => {
+
     const url = `http://localhost:5000/product/${id}`
     try {
         const res = await fetch(url, {

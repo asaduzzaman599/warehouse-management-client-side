@@ -14,6 +14,7 @@ import UpdateStock from './Components/UpdateStock/UpdateStock';
 import Login from './Components/Auth/Login/Login';
 import Register from './Components/Auth/Register/Register';
 import PrivateRoute from './Components/Auth/PrivateRoute/PrivateRoute';
+import Blogs from './Components/Blogs/Blogs';
 
 function App() {
   return (
@@ -44,6 +45,9 @@ function App() {
         }></Route>
         <Route path='/register' element={
           <PageTitle title={"Register"}><Register></Register></PageTitle>
+        }></Route>
+        <Route path='/blogs' element={
+          <PageTitle title={"Blogs"}><Blogs></Blogs></PageTitle>
         }></Route>
       </Routes>
       <Footer></Footer>

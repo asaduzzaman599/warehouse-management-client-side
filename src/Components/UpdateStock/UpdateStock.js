@@ -83,10 +83,14 @@ const UpdateStock = () => {
                         </div>
                         <div className='w-full text-left'>
 
-                            <h3> {item?.description}</h3>
-                            <h3> ${item?.price}</h3>
-                            <h3>Quantity: {item?.quantity}</h3>
-                            <h3>Sold: {item?.sold}</h3>
+
+                            <h3 className='text-xl font-semibold'>{item.name} </h3>
+                            <p className='text-sm text-gray-500 text-center'>{item?.description}</p>
+                            <p><span className='font-semibold'>Supplier :</span>  {item.supplier}</p>
+                            <p><span className='font-semibold'>Quantity:</span>  {item?.quantity} piece </p>
+                            <p><span className='font-semibold'>Total Sold:</span>  {item?.sold} piece </p>
+                            <p><span className='font-semibold'> ${item?.price}</span> per piece</p>
+
 
                         </div>
                     </div>
