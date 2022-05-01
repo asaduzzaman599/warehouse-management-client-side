@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
+import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
@@ -33,7 +34,7 @@ const Register = () => {
 
         if (!name) {
             return
-        } if (!email) {
+        } if (!(/^\S+@\S+\.\S+$/).test(email)) {
             return
         }
         if (!password || password.length < 6) {
@@ -45,28 +46,34 @@ const Register = () => {
         console.log(name, email, password)
         createUserWithEmailAndPassword(email, password)
     }
+    if (loading) {
+        return <Loading></Loading>
+    }
     return (
         <div className='bg-blue-500 '>
-            <div className='w-2/4 mr-auto min-h-screen bg-white  p-8 rounded-lg'>
-                <h3>Register</h3>
+            <div className='md:w-2/4 mr-auto min-h-screen bg-white  p-8 rounded-lg'>
+                <h3 className='my-10 text-2xl font-medium'>Register</h3>
                 <form onSubmit={handleForm} >
                     <div>
 
-                        <input type="text" name="name" id="name" placeholder='Your Name' />
+                        <input type="text" className='border-2 border-gray-200 w-full mb-2 rounded ' name="name" id="name" placeholder='Your Name' />
                     </div>
                     <div>
-                        <input type="email" name="email" id="email" placeholder='Your Email' />
+                        <input type="email" className='border-2 border-gray-200 w-full mb-2 rounded ' name="email" id="email" placeholder='Your Email' />
                     </div>
                     <div>
-                        <input type="password" name="password" id="password" placeholder='Your Password' />
+                        <input type="password" className='border-2 border-gray-200 w-full mb-2 rounded ' name="password" id="password" placeholder='Your Password' />
                     </div>
                     <div>
-                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder='Confirm Password' />
+                        <input type="password" className='border-2 border-gray-200 w-full mb-2 rounded ' name="confirmPassword" id="confirmPassword" placeholder='Confirm Password' />
                     </div>
 
 
+                    <input type="submit" value="Register" className='py-4 px-8 font-medium text-white  bg-slate-800 cursor-pointer hover:text-white hover:bg-slate-800 rounded duration-500' />
 
-                    <input type="submit" value="Register" />
+                    <p className='mt-4'>
+                        Already have an account? <Link to="/login" className=' text-blue-500 hover:underline' >Please login</Link></p>
+
                 </form>
 
                 <SocialLogin from={from}></SocialLogin>
