@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import useItems from '../../hooks/useItems';
 import manageDelete from '../../utils/manageDelete';
 import TableItem from '../TableItem/TableItem';
+import { PlusIcon } from '@heroicons/react/solid'
 
 const ManageItem = () => {
     const [page, setPage] = useState(0)
@@ -46,7 +47,8 @@ const ManageItem = () => {
 
 
             <div className='text-left mb-6'>
-                <Link to="/add" className='inline-block mt-8  py-4 px-8 font-medium text-white  bg-slate-800 cursor-pointer hover:text-white hover:bg-slate-800 rounded duration-500' >Add Items</Link>
+                <Link to="/add" className='inline-block mt-8  py-4 px-8 font-medium text-white  bg-slate-800 cursor-pointer hover:text-white hover:bg-slate-800 rounded duration-500' ><p className='flex items-center gap-4'><PlusIcon className="h-5 w-5 text-white" />
+                    Add Items</p></Link>
             </div>
 
 
