@@ -1,6 +1,8 @@
+import { async } from '@firebase/util';
 import React, { useEffect, useState } from 'react';
 import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { auth } from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
 import Loading from '../../Shared/Loading/Loading';
@@ -9,43 +11,59 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 const Register = () => {
 
     const [user] = useAuthState(auth)
-    const [createUserWithEmailAndPassword, u, loading, error,] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [createUserWithEmailAndPassword, u, loading, hookerror,] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const navigate = useNavigate()
 
     const [token] = useToken(user)
     const from = '/'
     useEffect(() => {
         if (token) {
-            console.log(token)
+
+            toast.success("User Created Successfully")
             navigate(from, { replace: true })
         }
     }, [token])
 
     const [formError, setFormError] = useState({ nameError: "", emailError: "", passwordError: "", confirmPasswordError: "" })
 
+    //displayed hook error with toast
+    useEffect(() => {
+        if (hookerror) {
+            console.log(hookerror.message)
+            switch (hookerror.message) {
+                case 'Firebase: Error (auth/email-already-in-use).':
+                    toast.error("User already exist")
+                    break;
+
+                default:
+                    toast.error("Something went Wrong")
+                    break;
+            }
+        }
+    }, [hookerror])
 
 
-    const handleForm = (event) => {
+    const handleForm = async (event) => {
         event.preventDefault()
         const name = event.target.name.value
         const email = event.target.email.value
         const password = event.target.password.value
         const confirmPassword = event.target.confirmPassword.value
-
+        setFormError({ nameError: "", emailError: "", passwordError: "", confirmPasswordError: "" })
         if (!name) {
-            return
+            return setFormError({ nameError: 'Empty input filled ' })
         } if (!(/^\S+@\S+\.\S+$/).test(email)) {
-            return
+            return setFormError({ emailError: 'Invalid email' })
         }
         if (!password || password.length < 6) {
-            return
+            return setFormError({ passwordError: 'Password length not less then 6' })
         } if (password !== confirmPassword) {
-            return
+            return setFormError({ confirmPasswordError: 'Password not matched' })
         }
 
-        console.log(name, email, password)
-        createUserWithEmailAndPassword(email, password)
+        await createUserWithEmailAndPassword(email, password)
     }
+
     if (loading) {
         return <Loading></Loading>
     }
@@ -54,18 +72,21 @@ const Register = () => {
             <div className='md:w-2/4 mr-auto min-h-screen bg-white  p-8 rounded-lg'>
                 <h3 className='my-10 text-2xl font-medium'>Register</h3>
                 <form onSubmit={handleForm} >
-                    <div>
-
+                    <div className='text-left pl-4 mb-2'>
                         <input type="text" className='border-2 border-gray-200 w-full mb-2 rounded ' name="name" id="name" placeholder='Your Name' />
+                        <p className='text-red-600 text-sm'>{formError.nameError}</p>
                     </div>
-                    <div>
+                    <div className='text-left pl-4 mb-2'>
                         <input type="email" className='border-2 border-gray-200 w-full mb-2 rounded ' name="email" id="email" placeholder='Your Email' />
+                        <p className='text-red-600 text-sm'>{formError.emailError}</p>
                     </div>
-                    <div>
+                    <div className='text-left pl-4 mb-2'>
                         <input type="password" className='border-2 border-gray-200 w-full mb-2 rounded ' name="password" id="password" placeholder='Your Password' />
+                        <p className='text-red-600 text-sm'>{formError.passwordError}</p>
                     </div>
-                    <div>
+                    <div className='text-left pl-4 mb-2'>
                         <input type="password" className='border-2 border-gray-200 w-full mb-2 rounded ' name="confirmPassword" id="confirmPassword" placeholder='Confirm Password' />
+                        <p className='text-red-600 text-sm'>{formError.confirmPasswordError}</p>
                     </div>
 
 
