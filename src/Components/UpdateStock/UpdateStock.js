@@ -1,3 +1,4 @@
+import { isDisabled } from '@testing-library/user-event/dist/utils';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -94,7 +95,7 @@ const UpdateStock = () => {
 
                         </div>
                     </div>
-                    <button className='w-full bg-slate-700 border-2 border-slate-700 duration-500 text-white w-2/4 mx-auto py-4  rounded-full hover:bg-white hover:text-slate-800 ' onClick={() => updateQuantity({ quantity: item.quantity - 1, sold: item.sold + 1 })}>Delivered</button>
+                    <button className='w-full bg-slate-700 border-2 border-slate-700 duration-500 text-white w-2/4 mx-auto py-4  rounded-full hover:bg-white hover:text-slate-800 font-medium ' onClick={() => updateQuantity(item.quantity > 0 ? { quantity: item.quantity - 1, sold: item.sold + 1 } : { quantity: item.quantity, sold: item.sold })}>{item.quantity > 0 ? "Delivered" : "Sold Out"}</button>
                 </div>
 
 

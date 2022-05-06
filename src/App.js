@@ -15,6 +15,7 @@ import Login from './Components/Auth/Login/Login';
 import Register from './Components/Auth/Register/Register';
 import PrivateRoute from './Components/Auth/PrivateRoute/PrivateRoute';
 import Blogs from './Components/Blogs/Blogs';
+import NotFound from './Components/Shared/NotFound/NotFound';
 
 function App() {
   return (
@@ -48,6 +49,9 @@ function App() {
         }></Route>
         <Route path='/blogs' element={
           <PageTitle title={"Blogs"}><Blogs></Blogs></PageTitle>
+        }></Route>
+        <Route path='*' element={
+          <PageTitle title={"error 404"}><NotFound></NotFound></PageTitle>
         }></Route>
       </Routes>
       <Footer></Footer>
