@@ -7,7 +7,7 @@ const Item = ({ item, children }) => {
 
         <div className='bg-white rounded shadow-lg  relative p-4'>
 
-            <h3 className='text-xl font-semibold'>{name} </h3>
+            <h3 className='text-xl font-semibold mb-6'>{name} </h3>
             <div className='flex flex-col md:flex-row  justify-between'>
                 <div className=' grow w-full'>
                     <img src={image} className='  mx-auto' alt="" />

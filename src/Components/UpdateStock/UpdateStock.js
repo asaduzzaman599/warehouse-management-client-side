@@ -33,6 +33,7 @@ const UpdateStock = () => {
 
 
         updateQuantity({ quantity: newQuantity, sold: item.sold })
+        event.target.quantity.value = ''
 
     }
     const updateQuantity = (newQuantity) => {
@@ -66,7 +67,7 @@ const UpdateStock = () => {
 
                     {/* from to update stock */}
                     <form onSubmit={handleForm} className=' bg-slate-800 p-6 rounded-lg w-full mx-auto mb-10'>
-                        <input type="number" name="quantity" className="block  px-0 w-full text-sm text-white  bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:ring-0 focus:border-blue-600 peer" placeholder="Add Quantity" required />
+                        <input type="number" name="quantity" className="block  px-0 w-full text-sm text-white  bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:ring-0 focus:border-blue-600 peer" placeholder="Add Stock" required />
                         <br />
                         <input type="submit" value="Add" className='py-2 px-8 font-medium text-white bg-slate-700 cursor-pointer hover:bg-white hover:text-slate-800 rounded duration-500' />
                     </form>
@@ -75,9 +76,10 @@ const UpdateStock = () => {
 
                 </div>
                 <div className='md:col-span-2 p-10  bg-white  md:order-1 rounded mx-8 shadow-lg'>
-                    <h3 className='text-2xl font-medium text-slate-800 mt-10'>{item.name}</h3>
+                    <h3 className='text-2xl font-medium text-slate-800 mt-10 mb-2'>{item.name}</h3>
+                    <p className='text-gray-500'>ID: {item._id}</p>
 
-                    <div className='flex flex-col md:flex-row items-center'>
+                    <div className='flex flex-col md:flex-row gap-10 mt-4 items-center'>
                         <div className='image-content w-full  mb-10'>
                             <img src={item?.image} className="w-full" alt="" />
 
@@ -85,8 +87,7 @@ const UpdateStock = () => {
                         <div className='w-full text-left'>
 
 
-                            <h3 className='text-xl font-semibold'>{item.name} </h3>
-                            <p className='text-sm text-gray-500 text-center'>{item?.description}</p>
+                            <p className='text-sm text-gray-500 text-center mb-2'>{item?.description}</p>
                             <p><span className='font-semibold'>Supplier :</span>  {item.supplier}</p>
                             <p><span className='font-semibold'>Quantity:</span>  {item?.quantity} piece </p>
                             <p><span className='font-semibold'>Total Sold:</span>  {item?.sold} piece </p>
