@@ -20,7 +20,7 @@ const Myitems = () => {
         const token = localStorage.getItem('access_token')
 
         fetch(url, {
-            headers: { token }
+            headers: { token: `bearer ${token}` }
         })
             .then(res => res.json())
             .then(data => {

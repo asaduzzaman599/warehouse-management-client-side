@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { auth } from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import Loading from './../../Shared/Loading/Loading'
 
 const Login = () => {
     const [user] = useAuthState(auth)
@@ -32,6 +33,24 @@ const Login = () => {
             navigate(from, { replace: true })
         }
     }, [token])
+
+    useEffect(() => {
+        if (hookError) {
+            console.log(hookError.message)
+            switch (hookError.message) {
+                case 'Firebase: Error (auth/user-not-found).':
+                    toast.error("User not Found")
+                    break;
+                case 'Firebase: Error (auth/wrong-password).':
+                    toast.error("Wrong email or password")
+                    break;
+                default:
+                    toast.error("Something went wrong")
+                    // code block
+                    break;
+            }
+        }
+    }, [hookError])
     const handleForm = (event) => {
         event.preventDefault()
         setError('')
@@ -54,6 +73,10 @@ const Login = () => {
         }
         await sendPasswordResetEmail(email)
         toast('Password reset mail sent')
+    }
+
+    if (loading) {
+        return <Loading></Loading>
     }
 
     return (
