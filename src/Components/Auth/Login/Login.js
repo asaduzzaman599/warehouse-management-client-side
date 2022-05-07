@@ -80,8 +80,8 @@ const Login = () => {
     }
 
     return (
-        <div className='bg-blue-500'>
-            <div className='md:w-2/4 ml-auto min-h-full bg-white p-8  min-h-screen rounded-lg'>
+        <div className=''>
+            <div className='md:w-2/4 mx-auto min-h-full bg-white p-8  min-h-screen rounded-lg shadow-lg my-10'>
                 <h3 className='my-10 text-2xl font-medium'>Login</h3>
                 <form onSubmit={handleForm}>
                     <div className=' mb-2 '>

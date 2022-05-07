@@ -1,25 +1,41 @@
 import React, { PureComponent } from 'react';
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Tooltip, Legend, Scatter, CartesianGrid, XAxis, YAxis, Line, LineChart, Bar, BarChart } from 'recharts';
 
-const ProductsPieCharts = ({ items }) => {
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
+
+
+
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const ProductsPieCharts = ({ total }) => {
+
+    const data = [
+        { name: 'Product', value: total.totalProduct },
+        { name: 'Sold', value: total.totalSold },
+    ];
+    const COLORS = ['#FF8042', '#0088FE', '#FFBB28', '#00C49F',];
     return (
-        <div  >
-            <BarChart
-                width={300}
-                height={250}
-                data={items}
-                className="mx-auto my-4"
+        <ResponsiveContainer width="90%" height={200}
+            className='mx-auto'>
+            <PieChart width="90%" height={200} className='mx-auto'
             >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="quantity" stackId="a" fill="#8884d8" />
-                <Bar dataKey="sold" stackId="a" fill="#82ca9d" />
+                <Pie
+                    data={data}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={40}
+                    outerRadius={60}
+                    fill="#8884d8"
+                    paddingAngle={5}
+                    dataKey="value"
+                >
+                    {data.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                </Pie>
 
-            </BarChart>
-        </div>
+                <Legend />
+                <Tooltip />
+            </PieChart>
+        </ResponsiveContainer>
     );
 };
 

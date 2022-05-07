@@ -70,6 +70,9 @@ const ManageItem = () => {
                                 Quantity
                             </th>
                             <th scope="col" className="px-6 py-3">
+                                Sold
+                            </th>
+                            <th scope="col" className="px-6 py-3">
                                 Price
                             </th>
                             <th scope="col" className="px-6 py-3">
