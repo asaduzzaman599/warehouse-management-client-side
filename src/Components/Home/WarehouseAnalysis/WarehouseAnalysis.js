@@ -3,13 +3,15 @@ import ProductsPieCharts from '../ProductsPieChart/ProductsPieCharts';
 const WarehouseAnalysis = ({ items }) => {
     let availableTotalProduct = 0;
     let totalSold = 0;
+
+    //add total quantity and sold of all items
     items.forEach(item => {
         availableTotalProduct = availableTotalProduct + item.quantity
         totalSold = totalSold + item.sold;
     });
     return (
         <div className=' md:w-4/5 mx-auto  py-6 px-10 my-6'>
-            <h3 className='my-10 text-2xl font-medium'>Warehouse Analysis</h3>
+            <h3 className='my-10 text-3xl font-semibold'>Warehouse Analysis</h3>
             <div className=' grid md:grid-cols-4  w-full gap-10 mb-8'>
                 <div className='   bg-blue-400 text-white   shadow-xl rounded-lg py-16'>
                     <p className='flex flex-col items-center justify-center font-semibold text-2xl '>Total item <span>{items.length}</span></p>

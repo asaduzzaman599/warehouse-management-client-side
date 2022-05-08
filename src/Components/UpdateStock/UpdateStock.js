@@ -21,8 +21,7 @@ const UpdateStock = () => {
             })
     }, [reLoad])
 
-    console.log(item)
-
+    //modify quantity and store in db
     const handleForm = (event) => {
         event.preventDefault()
         const quantity = Number(event.target.quantity.value);
@@ -36,8 +35,8 @@ const UpdateStock = () => {
         event.target.quantity.value = ''
 
     }
+
     const updateQuantity = (newQuantity) => {
-        console.log(newQuantity)
         const url = `https://store-house-asaduzzaman599.herokuapp.com/product/${item._id}`
         fetch(url, {
             method: "PUT",

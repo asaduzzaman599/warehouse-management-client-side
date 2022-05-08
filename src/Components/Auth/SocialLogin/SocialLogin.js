@@ -5,17 +5,13 @@ import { auth } from '../../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 const SocialLogin = ({ from = '/' }) => {
 
-    const [user] = useAuthState(auth)
-    const navigate = useNavigate()
+    //firebase hook
     const [signInWithGoogle, u, loading, error] = useSignInWithGoogle(auth);
+
     const googleLogin = () => {
         signInWithGoogle()
     }
-    /* useEffect(() => {
-        if (user) {
-            navigate(from, { replace: true })
-        }
-    }, [user]) */
+
     return (
         <div className='w-full'>
             <div className='flex items-center my-6'>

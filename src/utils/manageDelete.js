@@ -1,5 +1,5 @@
 const manageDelete = async (id) => {
-
+    //common delete function 
     const url = `https://store-house-asaduzzaman599.herokuapp.com/product/${id}`
     try {
         const res = await fetch(url, {

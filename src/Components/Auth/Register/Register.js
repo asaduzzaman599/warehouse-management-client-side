@@ -29,7 +29,7 @@ const Register = () => {
     //displayed hook error with toast
     useEffect(() => {
         if (hookerror) {
-            console.log(hookerror.message)
+            //showing toast based on error
             switch (hookerror.message) {
                 case 'Firebase: Error (auth/email-already-in-use).':
                     toast.error("User already exist")
@@ -50,6 +50,7 @@ const Register = () => {
         const password = event.target.password.value
         const confirmPassword = event.target.confirmPassword.value
         setFormError({ nameError: "", emailError: "", passwordError: "", confirmPasswordError: "" })
+        //checking all input field if alright then pass data for register
         if (!name) {
             return setFormError({ nameError: 'Empty input filled ' })
         } if (!(/^\S+@\S+\.\S+$/).test(email)) {
@@ -73,19 +74,19 @@ const Register = () => {
                 <h3 className='my-10 text-2xl font-medium'>Register</h3>
                 <form onSubmit={handleForm} >
                     <div className='text-left pl-4 mb-2'>
-                        <input type="text" className='border-2 border-gray-200 w-full mb-2 rounded ' name="name" id="name" placeholder='Your Name' />
+                        <input type="text" className='border-2 border-gray-200 w-full mb-2 rounded ' name="name" id="name" placeholder='Your Name' required />
                         <p className='text-red-600 text-sm'>{formError.nameError}</p>
                     </div>
                     <div className='text-left pl-4 mb-2'>
-                        <input type="email" className='border-2 border-gray-200 w-full mb-2 rounded ' name="email" id="email" placeholder='Your Email' />
+                        <input type="email" className='border-2 border-gray-200 w-full mb-2 rounded ' name="email" id="email" placeholder='Your Email' required />
                         <p className='text-red-600 text-sm'>{formError.emailError}</p>
                     </div>
                     <div className='text-left pl-4 mb-2'>
-                        <input type="password" className='border-2 border-gray-200 w-full mb-2 rounded ' name="password" id="password" placeholder='Your Password' />
+                        <input type="password" className='border-2 border-gray-200 w-full mb-2 rounded ' name="password" id="password" placeholder='Your Password' required />
                         <p className='text-red-600 text-sm'>{formError.passwordError}</p>
                     </div>
                     <div className='text-left pl-4 mb-2'>
-                        <input type="password" className='border-2 border-gray-200 w-full mb-2 rounded ' name="confirmPassword" id="confirmPassword" placeholder='Confirm Password' />
+                        <input type="password" className='border-2 border-gray-200 w-full mb-2 rounded ' name="confirmPassword" id="confirmPassword" placeholder='Confirm Password' required />
                         <p className='text-red-600 text-sm'>{formError.confirmPasswordError}</p>
                     </div>
 

@@ -4,12 +4,13 @@ import useItems from '../../../hooks/useItems';
 import Item from '../../Shared/Item/Item';
 import { ArrowRightIcon } from '@heroicons/react/solid'
 const InventoryItems = () => {
+    //using customhook getting data
     const [items, setItems] = useItems(6)
 
 
     return (
         <div className='w-4/5  mx-auto my-8'>
-            <h3 className='my-10 text-2xl font-medium'>Invetory Section </h3>
+            <h3 className='my-10 text-3xl font-semibold'>Invetory Section </h3>
 
             <div className='grid md:grid-cols-2 gap-10'>
                 {

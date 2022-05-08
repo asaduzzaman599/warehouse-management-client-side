@@ -53,7 +53,7 @@ const Myitems = () => {
             return
         }
         const data = await manageDelete(id)
-        console.log(data)
+
         if (data.success && data.result.deletedCount) {
             const remainItem = items.filter(item => item._id !== id)
             setItems(remainItem)

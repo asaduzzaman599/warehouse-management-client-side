@@ -25,38 +25,71 @@ function App() {
       <Header></Header>
       <ToastContainer />
       <Routes>
+
         <Route path='/' element={
-          <PageTitle title={"Home"}><Home></Home></PageTitle>
+          <PageTitle title={"Home"}>
+            <Home></Home>
+          </PageTitle>
         }></Route>
+
         <Route path='/add' element={
-          <PageTitle title={"Add Item"}><Additem></Additem></PageTitle>
-        }></Route>
-        <Route path='/manage' element={
-          <PageTitle title={"Manage Items"}><ManageItem></ManageItem></PageTitle>
-        }></Route>
-        <Route path='/myitems' element={
-          <PageTitle title={"My Items"}><Myitems></Myitems></PageTitle>
-        }></Route>
-        <Route path='inventory/:id' element={
           <PrivateRoute>
-            <PageTitle title={"Items Stock"}><UpdateStock></UpdateStock></PageTitle>
+            <PageTitle title={"Add Item"}>
+              <Additem></Additem>
+            </PageTitle>
           </PrivateRoute>
         }></Route>
+
+        <Route path='/manage' element={
+          <PageTitle title={"Manage Items"}>
+            <ManageItem></ManageItem>
+          </PageTitle>
+        }></Route>
+
+        <Route path='/myitems' element={
+          <PageTitle title={"My Items"}>
+            <Myitems></Myitems>
+          </PageTitle>
+        }></Route>
+
+        <Route path='inventory/:id' element={
+          <PrivateRoute>
+            <PageTitle title={"Items Stock"}>
+              <UpdateStock></UpdateStock>
+            </PageTitle>
+          </PrivateRoute>
+        }></Route>
+
         <Route path='/login' element={
-          <PageTitle title={"Login"}><Login></Login></PageTitle>
+          <PageTitle title={"Login"}>
+            <Login></Login>
+          </PageTitle>
         }></Route>
+
         <Route path='/register' element={
-          <PageTitle title={"Register"}><Register></Register></PageTitle>
+          <PageTitle title={"Register"}>
+            <Register></Register>
+          </PageTitle>
         }></Route>
+
         <Route path='/blogs' element={
-          <PageTitle title={"Blogs"}><Blogs></Blogs></PageTitle>
+          <PageTitle title={"Blogs"}>
+            <Blogs></Blogs>
+          </PageTitle>
         }></Route>
+
         <Route path='/contact' element={
-          <PageTitle title={"Contact"}><Contact></Contact></PageTitle>
+          <PageTitle title={"Contact"}>
+            <Contact></Contact>
+          </PageTitle>
         }></Route>
+
         <Route path='*' element={
-          <PageTitle title={"error 404"}><NotFound></NotFound></PageTitle>
+          <PageTitle title={"Error 404"}>
+            <NotFound></NotFound>
+          </PageTitle>
         }></Route>
+
       </Routes>
       <Footer></Footer>
     </div>

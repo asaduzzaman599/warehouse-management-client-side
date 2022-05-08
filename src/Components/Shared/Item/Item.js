@@ -10,7 +10,7 @@ const Item = ({ item, children }) => {
             <h3 className='text-xl font-semibold mb-6'>{name} </h3>
             <div className='grid  md:grid-cols-2 '>
                 <div className='  w-full'>
-                    <img src={image} className='  mx-auto' alt="" />
+                    <img src={image} className='  mx-auto h-52' alt="" />
                 </div>
                 <div className='p-8 text-right flex flex-col gap-2 justify-between  w-full'>
                     <hr className='pt-2' />

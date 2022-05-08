@@ -10,10 +10,11 @@ const Additem = () => {
         price: '',
         quantity: ''
     })
+
     const [user] = useAuthState(auth)
 
 
-
+    //collect data from form and sent to the db
     const handleForm = (event) => {
         setError({ price: '', quantity: '' })
         event.preventDefault()
@@ -24,6 +25,8 @@ const Additem = () => {
         const quantity = Number(event.target.quantity.value);
         const supplier = event.target.supplier.value;
         const email = user?.email
+
+        //checking the price and quantity not invalid
         if (!price || price < 0) {
             return setError({ ...error, price: "Invalid Price" })
         }
@@ -31,10 +34,12 @@ const Additem = () => {
             return setError({ ...error, quantity: "Invalid Quantity" })
         }
 
+        //creating object
         const product = {
             name, description, image, price, quantity, supplier, email, sold: 0
         }
 
+        //sent data to the server
         fetch("https://store-house-asaduzzaman599.herokuapp.com/product", {
             method: "POST",
             headers: {
@@ -47,10 +52,13 @@ const Additem = () => {
                 if (data.success) {
                     toast.success(data.message)
                     navigate('/manage')
+                } else {
+                    toast.error(data.message)
                 }
             })
 
     }
+
 
     return (
         <div className='w-4/5 mx-auto md:w-2/4 bg-white my-8 p-8 shadow-lg'>

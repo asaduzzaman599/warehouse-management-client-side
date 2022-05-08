@@ -13,7 +13,7 @@ const Login = () => {
     const [user] = useAuthState(auth)
     const [signInWithEmailAndPassword, u, loading, hookError,] = useSignInWithEmailAndPassword(auth);
 
-    console.log(loading)
+
     //password reset hook
     const [sendPasswordResetEmail, sending, resetPasswordError] = useSendPasswordResetEmail(auth);
 
@@ -30,14 +30,14 @@ const Login = () => {
 
     useEffect(() => {
         if (token) {
-            console.log(token)
+
             navigate(from, { replace: true })
         }
     }, [token])
 
     useEffect(() => {
         if (hookError) {
-            console.log(hookError.message)
+            // showing toast based on checing error 
             switch (hookError.message) {
                 case 'Firebase: Error (auth/user-not-found).':
                     toast.error("User not Found")
@@ -55,17 +55,22 @@ const Login = () => {
 
     const handleForm = (event) => {
         event.preventDefault()
+        //initially set email error empty
         setError('')
 
         const email = event.target.email.value
         const password = event.target.password.value
         signInWithEmailAndPassword(email, password)
+        // set email email empty
         setEmail('')
 
     }
 
+    //reset mail sent and showing toast
     const resetPassword = async () => {
+        //initially set email error empty
         setError('')
+        //checking all input field are valid
         if (!email) {
             return setError('Please enter your email')
         }

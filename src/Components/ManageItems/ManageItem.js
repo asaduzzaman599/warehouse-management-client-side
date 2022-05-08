@@ -5,24 +5,36 @@ import useItems from '../../hooks/useItems';
 import manageDelete from '../../utils/manageDelete';
 import TableItem from '../TableItem/TableItem';
 import { PlusIcon } from '@heroicons/react/solid'
+import Loading from '../Shared/Loading/Loading';
 
 const ManageItem = () => {
     const [page, setPage] = useState(0)
     const [size, setSize] = useState(5)
     const [count, setCount] = useState(0)
     const [items, setItems] = useState([])
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
+
         const url = `https://store-house-asaduzzaman599.herokuapp.com/allproducts?page=${page}&&size=${size}`
+        setLoading(true)
         fetch(url)
             .then(res => res.json())
             .then(data => {
+
+                setLoading(false)
                 if (data.success) {
                     setItems(data.result)
                     const pageNumber = Math.ceil(data.count / size)
                     setCount(pageNumber)
                 }
             })
+
     }, [page, size])
+    if (loading) {
+        return (<Loading></Loading>)
+    }
+
+
 
 
     const deleteItem = async (id) => {

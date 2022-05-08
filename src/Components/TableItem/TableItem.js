@@ -12,7 +12,7 @@ const TableItem = ({ item, deleteItem }) => {
                 {email}
             </td>
             <td className="px-6 py-4">
-                {supplier}
+                {supplier ? supplier : ""}
             </td>
             <td className="px-6 py-4">
                 {quantity}
