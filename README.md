@@ -15,7 +15,7 @@ Server side[Click here](https://github.com/ProgrammingHeroWC4/warehouse-manageme
 - User can login with Email, Password and Google account.
 - User can varify and can reset password with mail.
 - All items data will store in mongodb data base.
-- Server created with nodejs for smooth and first performance. 
+- Server created with nodejs for smooth and fast performance. 
 
 
 ### Technologies Used
