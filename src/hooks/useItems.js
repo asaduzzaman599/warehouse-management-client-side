@@ -1,5 +1,5 @@
 const { useEffect, useState } = require("react")
-
+//custom hook for geting items data
 const useItems = (limit) => {
 
     const [items, setItems] = useState([])

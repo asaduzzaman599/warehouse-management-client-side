@@ -13,8 +13,9 @@ const ManageItem = () => {
     const [count, setCount] = useState(0)
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(false)
-    useEffect(() => {
 
+    useEffect(() => {
+        //fetch data depanding on page and size
         const url = `https://store-house-asaduzzaman599.herokuapp.com/allproducts?page=${page}&&size=${size}`
         setLoading(true)
         fetch(url)
@@ -30,6 +31,7 @@ const ManageItem = () => {
             })
 
     }, [page, size])
+
     if (loading) {
         return (<Loading></Loading>)
     }
@@ -38,6 +40,7 @@ const ManageItem = () => {
 
 
     const deleteItem = async (id) => {
+        //asking for delete item
         const confirmed = window.confirm(`You want to delete?`)
         if (!confirmed) {
             return
@@ -65,6 +68,7 @@ const ManageItem = () => {
 
 
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg container mx-auto">
+                {/* table of all data */}
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -103,6 +107,7 @@ const ManageItem = () => {
 
             </div>
             <div className='my-4'>
+                {/* pagination page number */}
                 {
                     [...Array(count).keys()].map(number => <button
                         key={number} className={`${page === number ? 'bg-slate-700 text-white' : ''} px-2  m-2 inline-block rounded-full border-2 border-slate-700`} onClick={() => setPage(number)}>{number + 1}</button>)

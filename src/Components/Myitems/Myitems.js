@@ -21,9 +21,11 @@ const Myitems = () => {
         const email = user?.email
         setLoading(true)
         const url = `https://store-house-asaduzzaman599.herokuapp.com/myproduct?email=${email}`
+        //access token from localstorage
         const token = localStorage.getItem('access_token')
 
         if (user) {
+            //get all user adding data with accesstoken
             fetch(url, {
                 headers: { token: `bearer ${token}` }
             })

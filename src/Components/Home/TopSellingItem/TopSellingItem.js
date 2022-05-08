@@ -2,7 +2,7 @@ import React from 'react';
 
 const TopSellingItem = ({ items }) => {
     return (
-        <div><h3 className='my-10 text-2xl font-medium'>Top 3 Selling Product</h3>
+        <div><h3 className='my-10 text-3xl font-semibold'>Top 3 Selling Product</h3>
             <div className=" mb-8 w-5/6 mx-auto relative overflow-x-auto  sm:rounded-lg container mx-auto">
 
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 shadow-lg">

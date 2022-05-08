@@ -14,6 +14,7 @@ const Register = () => {
     const [createUserWithEmailAndPassword, u, loading, hookerror,] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const navigate = useNavigate()
 
+    //access token
     const [token] = useToken(user)
     const from = '/'
     useEffect(() => {

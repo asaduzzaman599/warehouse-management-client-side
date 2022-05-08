@@ -29,6 +29,7 @@ const WarehouseAnalysis = ({ items }) => {
                 </div>
             </div>
             <div className=' bg-red-100  shadow-xl rounded-lg py-16  w-full overflow-hidden'>
+                {/* Chart section */}
                 <h5 className='font-semibold text-2xl'>Total Purchase</h5>
                 <ProductsPieCharts total={{ totalProduct: availableTotalProduct, totalSold }}></ProductsPieCharts>
             </div>

@@ -5,7 +5,7 @@ const useToken = (user) => {
 
     useEffect(() => {
         const email = user?.email;
-
+        //access token hook based on login and registration
         if (email) {
             fetch('https://store-house-asaduzzaman599.herokuapp.com/login', {
                 method: "POST",
