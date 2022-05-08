@@ -17,7 +17,9 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <InventoryItems></InventoryItems>
+            <hr />
             <WarehouseAnalysis items={items}></WarehouseAnalysis>
+            <hr />
             <TopSellingItem items={items.slice(0, 3)}></TopSellingItem>
         </div>
     );

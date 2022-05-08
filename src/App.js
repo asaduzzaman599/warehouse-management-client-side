@@ -16,6 +16,7 @@ import Register from './Components/Auth/Register/Register';
 import PrivateRoute from './Components/Auth/PrivateRoute/PrivateRoute';
 import Blogs from './Components/Blogs/Blogs';
 import NotFound from './Components/Shared/NotFound/NotFound';
+import Contact from './Components/Contact/Contact';
 
 function App() {
   return (
@@ -49,6 +50,9 @@ function App() {
         }></Route>
         <Route path='/blogs' element={
           <PageTitle title={"Blogs"}><Blogs></Blogs></PageTitle>
+        }></Route>
+        <Route path='/contact' element={
+          <PageTitle title={"Contact"}><Contact></Contact></PageTitle>
         }></Route>
         <Route path='*' element={
           <PageTitle title={"error 404"}><NotFound></NotFound></PageTitle>

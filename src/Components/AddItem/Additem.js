@@ -35,7 +35,7 @@ const Additem = () => {
             name, description, image, price, quantity, supplier, email, sold: 0
         }
 
-        fetch("http://localhost:5000/product", {
+        fetch("https://store-house-asaduzzaman599.herokuapp.com/product", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

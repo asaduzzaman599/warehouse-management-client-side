@@ -12,7 +12,7 @@ const ManageItem = () => {
     const [count, setCount] = useState(0)
     const [items, setItems] = useState([])
     useEffect(() => {
-        const url = `http://localhost:5000/allproducts?page=${page}&&size=${size}`
+        const url = `https://store-house-asaduzzaman599.herokuapp.com/allproducts?page=${page}&&size=${size}`
         fetch(url)
             .then(res => res.json())
             .then(data => {

@@ -9,7 +9,7 @@ const UpdateStock = () => {
     const [reLoad, setReload] = useState(false)
 
     useEffect(() => {
-        const url = `http://localhost:5000/product/${id}`
+        const url = `https://store-house-asaduzzaman599.herokuapp.com/product/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -38,7 +38,7 @@ const UpdateStock = () => {
     }
     const updateQuantity = (newQuantity) => {
         console.log(newQuantity)
-        const url = `http://localhost:5000/product/${item._id}`
+        const url = `https://store-house-asaduzzaman599.herokuapp.com/product/${item._id}`
         fetch(url, {
             method: "PUT",
             headers: {

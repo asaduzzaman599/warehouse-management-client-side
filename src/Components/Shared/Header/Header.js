@@ -21,7 +21,7 @@ const Header = () => {
                         {isOpen ? <XIcon onClick={() => setIsOpen(!isOpen)} className="h-8 w-8 text-white mx-auto " /> : <MenuIcon onClick={() => setIsOpen(!isOpen)} className="h-8 w-8 text-white mx-auto " />}
                     </div>
                 </div>
-                <div className={`flex flex-col md:flex-row py-4  items-center justify-between  md:grow absolute md:static w-full md:w-auto bg-slate-800 ${isOpen ? "top-10" : "top-[-200px]"}`}>
+                <div className={`flex flex-col md:flex-row py-4  items-center justify-between  md:grow absolute md:static w-full md:w-auto bg-slate-800 ${isOpen ? "top-10" : "top-[-250px]"}`}>
                     <ul className='md:flex gap-5 no-underline  '>
 
                         <li className='text-sm hover:text-slate-400 mt-2'><NavLink to='/'>Home</NavLink></li>
@@ -37,6 +37,7 @@ const Header = () => {
                                 </>
                         }
 
+                        <li className='text-sm hover:text-slate-400 mt-2'><NavLink to='/contact'>Contact</NavLink></li>
                         <li className='text-sm hover:text-slate-400 mt-2'><NavLink to='/blogs'>Blogs</NavLink></li>
                     </ul>
 

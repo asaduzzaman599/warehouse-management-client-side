@@ -6,7 +6,7 @@ const useItems = (limit) => {
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true)
-        const url = `http://localhost:5000/products?limit=${limit}`
+        const url = `https://store-house-asaduzzaman599.herokuapp.com/products?limit=${limit}`
         fetch(url)
             .then(res => res.json())
             .then(data => {

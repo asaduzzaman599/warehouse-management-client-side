@@ -8,33 +8,44 @@ import Item from '../Shared/Item/Item';
 import NoData from '../Shared/NoData/NoData';
 import { XIcon } from '@heroicons/react/solid'
 import manageDelete from '../../utils/manageDelete';
+import Loading from '../Shared/Loading/Loading';
 
 const Myitems = () => {
     const [items, setItems] = useState([])
     const [user] = useAuthState(auth)
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
+
 
     useEffect(() => {
         const email = user?.email
-        const url = `http://localhost:5000/myproduct?email=${email}`
+        setLoading(true)
+        const url = `https://store-house-asaduzzaman599.herokuapp.com/myproduct?email=${email}`
         const token = localStorage.getItem('access_token')
 
-        fetch(url, {
-            headers: { token: `bearer ${token}` }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data?.success) {
-                    setItems(data.result)
-                }
-                if (data?.message && user) {
-                    toast.error(data?.message)
-                    signOut(auth)
-                    navigate('/login')
-                }
+        if (user) {
+            fetch(url, {
+                headers: { token: `bearer ${token}` }
             })
+                .then(res => res.json())
+                .then(data => {
+
+                    setLoading(false)
+                    if (data?.success) {
+                        setItems(data.result)
+                    }
+                    if (data?.message && user) {
+                        toast.error(data?.message)
+                        signOut(auth)
+                        navigate('/login')
+                    }
+                })
+        }
     }, [user])
+
+    if (loading) {
+        return (<Loading></Loading>)
+    }
 
     const deleteItem = async (id) => {
         const confirmed = window.confirm(`You want to delete?`)

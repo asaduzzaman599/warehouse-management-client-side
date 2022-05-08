@@ -9,7 +9,7 @@ const InventoryItems = () => {
 
     return (
         <div className='w-4/5  mx-auto my-8'>
-            <h3 className='my-10 text-2xl font-medium'>invetory Section </h3>
+            <h3 className='my-10 text-2xl font-medium'>Invetory Section </h3>
 
             <div className='grid md:grid-cols-2 gap-10'>
                 {

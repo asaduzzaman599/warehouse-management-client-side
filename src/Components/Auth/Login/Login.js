@@ -9,6 +9,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import Loading from './../../Shared/Loading/Loading'
 
 const Login = () => {
+
     const [user] = useAuthState(auth)
     const [signInWithEmailAndPassword, u, loading, hookError,] = useSignInWithEmailAndPassword(auth);
 
@@ -51,6 +52,7 @@ const Login = () => {
             }
         }
     }, [hookError])
+
     const handleForm = (event) => {
         event.preventDefault()
         setError('')
@@ -58,7 +60,7 @@ const Login = () => {
         const email = event.target.email.value
         const password = event.target.password.value
         signInWithEmailAndPassword(email, password)
-
+        setEmail('')
 
     }
 
@@ -89,9 +91,9 @@ const Login = () => {
                         <p className='text-left text-red-600 text-sm'>{error}</p>
                     </div>
                     <div>
-                        <input type="password" name="password" className='border-2 border-gray-200 w-full mb-2 rounded ' id="password" placeholder='Your Password' />
+                        <input type="password" name="password" className='border-2 border-gray-200 w-full mb-2 rounded ' id="password" placeholder='Your Password' required />
                     </div>
-                    <input type="submit" value="LogIn" className='py-4 px-8 font-medium text-white  bg-slate-800 cursor-pointer hover:text-white hover:bg-slate-800 rounded duration-500' />
+                    <input type="submit" value="LogIn" className='py-4 px-8 font-medium text-white  bg-slate-800 cursor-pointer hover:text-white hover:bg-slate-800 rounded duration-500' required />
 
                     <p className='my-4'>
                         Don't have account? <Link to="/register" className=' text-blue-500 hover:underline ' >Please Register</Link></p>

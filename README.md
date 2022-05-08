@@ -14,6 +14,8 @@ Server side[Click here](https://github.com/ProgrammingHeroWC4/warehouse-manageme
 - Private route for add items ensuring that user have to logged in to navigate this page and JWT for authorized to get his added items.
 - User can login with Email, Password and Google account.
 - User can varify and can reset password with mail.
+- All items data will store in mongodb data base.
+- Server created with nodejs for smooth and first performance. 
 
 
 ### Technologies Used
